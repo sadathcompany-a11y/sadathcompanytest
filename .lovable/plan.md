@@ -1,60 +1,27 @@
-## Reposition: Custom Software + Web Design Agency
+# Send contact emails from sadathcompany.com
 
-Rework the homepage so Sadath Company is positioned 50/50 as a custom business software studio *and* a web design agency, with software examples (internal dashboards, booking/scheduling, workflow automation) featured prominently.
+Right now the contact form sends through Resend using `onboarding@resend.dev`, which Resend only delivers to your own Resend account address. To reliably receive inquiries at contact@sadathcompany.com, the domain has to be verified in Resend.
 
-### Hero
-- Tagline: "Custom Software & Web Design · For Growing Businesses"
-- Headline: "We build software, you run the business" (italic second line)
-- Description rewritten to emphasize both custom software for small businesses (dashboards, booking, automation) and beautifully designed websites.
+## What I found
 
-### New "What We Build" section (above Process)
-Two-column layout with equal weight:
-- **Custom Software** — Internal dashboards, booking & scheduling systems, workflow automation. Brief copy about replacing spreadsheets, saving hours/week, streamlining operations.
-- **Web Design** — Marketing sites, e-commerce, custom builds. Brief copy from current positioning.
+The Resend API key connected to this project is a **send-only key** — it cannot create or verify domains programmatically (Resend returns "This API key is restricted to only send emails"). So domain verification has to be done by you in the Resend dashboard; I handle the app side.
 
-Each column shows 3 example use-cases with icons.
+## Your steps (one-time, ~5 minutes + DNS propagation)
 
-### Pricing — replace E-Commerce tier with Software tier
-Keep two-card layout. Repurpose the second card:
+1. In Resend, go to **Domains → Add Domain** and enter `sadathcompany.com` (or a subdomain like `mail.sadathcompany.com` if you prefer to keep the root domain's mail untouched).
+2. Resend shows a set of DNS records (an MX record, an SPF TXT record, and a DKIM TXT record).
+3. Add those records at your DNS provider for sadathcompany.com.
+4. Back in Resend, click **Verify**. Status turns "Verified" once DNS propagates (usually minutes, up to 72 hours).
+5. Tell me the verified domain and the sender address you want (suggested: `Sadath Company <contact@sadathcompany.com>`).
 
-```text
-Card 1: Startup Website         Card 2: Custom Software
-£400–£800                       £2,000–£8,000+
-- Up to 5-page custom site      - Discovery & process mapping
-- Mobile-first design           - Custom dashboard or tool
-- Brand & design overhaul       - User auth & roles
-- 1 yr managed hosting          - Integrations (Stripe, email, APIs)
-- Basic SEO & analytics         - Hosting & maintenance
-- Domain configuration          - Training & handover
-                                Badge: "Most Impact"
-```
+## What I do
 
-Pricing subtitle updated to mention both software and websites; note that software scope varies and final quote follows a discovery call (consistent with existing custom-SOW positioning).
+- Set the `CONTACT_FROM_EMAIL` secret to the verified sender address (the send function already reads it, so no code change is strictly needed).
+- Optionally hardcode the sender in the function and drop the `onboarding@resend.dev` fallback, so a misconfigured secret can never silently send from the sandbox address.
+- Send a live test through the contact form and confirm it lands at contact@sadathcompany.com.
 
-### Process section
-Keep 5 steps but reframe to cover both software and web work:
-1. Discovery Call — understand business, users, current process
-2. Strategy & Wireframes — map flows, data, screens
-3. Design — interface & brand
-4. Build — software or website, modern stack
-5. Launch & Support — deploy, train, stay on call
+## Technical notes
 
-### Contact form
-Update service dropdown options:
-- Custom Software (Dashboard / Tool / Automation)
-- Booking or Scheduling System
-- Startup Website (£400–£800)
-- E-Commerce / Custom Site
-- Design Overhaul / Rebrand
-- Consulting
-- Other
-
-### SEO
-- Update `<Seo>` title/description on Index to reflect dual positioning.
-- Update `index.html` default meta + JSON-LD `Organization` description.
-- Update `public/llms.txt` summary.
-
-### Out of scope
-- No backend/Stripe changes (Stripe tier IDs stay as-is — second tier still maps to "Pro").
-- No new pages, no logo changes, no theme changes.
-- Terms/Privacy already cover bespoke SOWs — no edits.
+- Function: `supabase/functions/send-contact-email/index.ts`. `FROM_EMAIL` = `Deno.env.get('CONTACT_FROM_EMAIL')` with the `onboarding@resend.dev` fallback; `TO_EMAIL` is already `contact@sadathcompany.com`, and `reply_to` is set to the submitter.
+- After changing the secret or the file, the function is redeployed.
+- Verification is per sending domain, so if you use a subdomain the `from` address must be on that subdomain.
