@@ -33,7 +33,7 @@ const t = {
   },
   hero: {
     tagline: "Websites · E-Commerce · Software · Systems",
-    title: "Software that runs it, websites that grow it.",
+    title: "Systems that run it, websites that grow it.",
     description:
       "Sadath Company is a UK studio building websites, online stores, custom software, and the internal systems behind them — from booking and dashboards to workflow automation.",
     cta: "Get Started",
