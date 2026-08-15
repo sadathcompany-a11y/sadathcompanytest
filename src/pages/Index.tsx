@@ -81,36 +81,52 @@ const t = {
 
 const pricingOptions = [
   {
-    label: "Custom Websites",
-    priceMin: 400,
-    priceMax: 800,
+    label: "Websites",
+    price: "From £400",
+    note: "one-off project fee",
+    href: "/websites",
     features: [
-      "Unlimited pages custom website",
-      "Individually designed websites",
+      "Unlimited pages, individually designed",
       "Mobile-first responsive design",
-      "Brand & design overhaul",
-      "4 years managed hosting and security",
+      "Brand & design direction",
       "Basic SEO setup & analytics",
       "Domain configuration",
+      "Free training + 3 months support",
     ],
     badge: null,
   },
   {
-    label: "Custom Systems",
-    priceMin: 600,
-    priceMax: 2000,
+    label: "Systems",
+    price: "From £600",
+    note: "business solutions",
+    href: "/systems",
     features: [
       "Discovery & process mapping",
-      "Custom dashboard, tool, or automation",
+      "Custom dashboard, tool or automation",
       "Free custom to-do list included",
       "User authentication & roles",
       "Integrations (Stripe, email, APIs)",
-      "Managed hosting & maintenance",
-      "Team training & handover",
+      "Free team training & handover",
     ],
     badge: "Most Impact",
   },
+  {
+    label: "Hosting",
+    price: "From £8/mo",
+    note: "£400 for 4 years · save £100",
+    href: "/hosting",
+    features: [
+      "£400 once for 4 years (£8/month)",
+      "Or £125 per year (£10/month)",
+      "SSL, security patches & monitoring",
+      "Daily backups & uptime checks",
+      "Domain & DNS management",
+      "Completely optional — your choice",
+    ],
+    badge: null,
+  },
 ];
+
 
 const serviceOptions = [
   "Custom Systems (Dashboard / Tool / Automation)",
