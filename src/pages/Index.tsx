@@ -71,7 +71,7 @@ const t = {
   pricing: {
     title: "Studio Packages",
     subtitle:
-      "Indicative pricing for websites and custom software. Final scope and quote follow a discovery call.",
+      "Websites from £400, systems from £600, and optional managed hosting from £8/month. Final scope and quote follow a discovery call.",
     perPackage: "starting at",
     select: "Choose Package",
   },
@@ -402,9 +402,12 @@ export default function Index() {
             <span className="text-[10px] tracking-[0.5em] uppercase opacity-40 mb-4 block">
               What We Build
             </span>
-            <h2 className="font-serif text-4xl md:text-6xl mb-6">
-              Websites, Stores, <span className="italic">Software &amp; Systems</span>
-            </h2>
+            <AnimatedText
+              as="h2"
+              text="Websites, Stores, Software & Systems"
+              italicFrom={2}
+              className="font-serif text-4xl md:text-6xl mb-6 block"
+            />
             <p className="text-muted-foreground text-lg font-serif italic max-w-2xl mx-auto">
               One studio for the site customers see, the store that sells, and the systems that keep it all running.
 
@@ -450,9 +453,11 @@ export default function Index() {
 
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-24">
-            <h2 className="font-serif text-4xl md:text-6xl mb-6">
-              {t.pricing.title}
-            </h2>
+            <AnimatedText
+              as="h2"
+              text={t.pricing.title}
+              className="font-serif text-4xl md:text-6xl mb-6 block"
+            />
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
               {t.pricing.subtitle}
             </p>
@@ -550,9 +555,12 @@ export default function Index() {
             <span className="text-[10px] tracking-[0.5em] uppercase opacity-50 mb-6 block">
               {t.nav.contact}
             </span>
-            <h2 className="font-serif text-4xl md:text-6xl mb-6 leading-tight">
-              Let's <span className="italic">talk</span>
-            </h2>
+            <AnimatedText
+              as="h2"
+              text="Let's talk"
+              italicFrom={1}
+              className="font-serif text-4xl md:text-6xl mb-6 leading-tight block"
+            />
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
               Share a few details and we'll get back within 24 hours.
             </p>
@@ -654,9 +662,11 @@ export default function Index() {
             <span className="text-[10px] tracking-[0.5em] uppercase opacity-40 mb-4 block">
               01 — Process
             </span>
-            <h2 className="font-serif text-4xl md:text-6xl mb-6">
-              {t.services.title}
-            </h2>
+            <AnimatedText
+              as="h2"
+              text={t.services.title}
+              className="font-serif text-4xl md:text-6xl mb-6 block"
+            />
             <p className="text-muted-foreground text-lg font-serif italic max-w-2xl mx-auto">
               {t.services.subtitle}
             </p>
