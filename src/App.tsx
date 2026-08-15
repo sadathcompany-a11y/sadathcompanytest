@@ -7,6 +7,9 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
+import Websites from "./pages/Websites.tsx";
+import Systems from "./pages/Systems.tsx";
+import Hosting from "./pages/Hosting.tsx";
 
 import { CustomCursor } from "@/components/CustomCursor";
 
@@ -21,7 +24,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-
+          <Route path="/websites" element={<Websites />} />
+          <Route path="/systems" element={<Systems />} />
+          <Route path="/hosting" element={<Hosting />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

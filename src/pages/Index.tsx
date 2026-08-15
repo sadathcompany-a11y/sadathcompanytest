@@ -21,10 +21,13 @@ import {
   X,
 } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import sadathLogo from "@/assets/sadath-logo.png";
 import { Seo } from "@/components/Seo";
+import { AnimatedText } from "@/components/AnimatedText";
+
 
 const t = {
   nav: {
@@ -68,7 +71,7 @@ const t = {
   pricing: {
     title: "Studio Packages",
     subtitle:
-      "Indicative pricing for websites and custom software. Final scope and quote follow a discovery call.",
+      "Websites from £400, systems from £600, and optional managed hosting from £8/month. Final scope and quote follow a discovery call.",
     perPackage: "starting at",
     select: "Choose Package",
   },
@@ -81,46 +84,64 @@ const t = {
 
 const pricingOptions = [
   {
-    label: "Custom Websites",
-    priceMin: 400,
-    priceMax: 800,
+    label: "Websites",
+    price: "From £400",
+    note: "one-off project fee",
+    href: "/websites",
     features: [
-      "Unlimited pages custom website",
-      "Individually designed websites",
+      "Unlimited pages, individually designed",
       "Mobile-first responsive design",
-      "Brand & design overhaul",
-      "4 years managed hosting and security",
+      "Brand & design direction",
       "Basic SEO setup & analytics",
       "Domain configuration",
+      "Free training + 3 months support",
     ],
     badge: null,
   },
   {
-    label: "Custom Systems",
-    priceMin: 600,
-    priceMax: 2000,
+    label: "Systems",
+    price: "From £600",
+    note: "business solutions",
+    href: "/systems",
     features: [
       "Discovery & process mapping",
-      "Custom dashboard, tool, or automation",
+      "Custom dashboard, tool or automation",
       "Free custom to-do list included",
       "User authentication & roles",
       "Integrations (Stripe, email, APIs)",
-      "Managed hosting & maintenance",
-      "Team training & handover",
+      "Free team training & handover",
     ],
     badge: "Most Impact",
   },
+  {
+    label: "Hosting",
+    price: "From £8/mo",
+    note: "£400 for 4 years · save £100",
+    href: "/hosting",
+    features: [
+      "£400 once for 4 years (£8/month)",
+      "Or £125 per year (£10/month)",
+      "SSL, security patches & monitoring",
+      "Daily backups & uptime checks",
+      "Domain & DNS management",
+      "Completely optional — your choice",
+    ],
+    badge: null,
+  },
 ];
 
+
 const serviceOptions = [
-  "Custom Systems (Dashboard / Tool / Automation)",
-  "Booking or Scheduling System",
-  "Custom Website (£400–£800)",
+  "Custom Website (from £400)",
+  "Custom Systems / Business Solutions (from £600)",
+  "Managed Hosting (£8/month)",
   "E-Commerce / Custom Site",
+  "Booking or Scheduling System",
   "Design Overhaul / Rebrand",
   "Consulting",
   "Other",
 ];
+
 
 
 const inputClasses =
@@ -253,8 +274,14 @@ export default function Index() {
           />
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-6">
+          <div className="hidden md:flex items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase opacity-60">
+            <Link to="/websites" className="hover:opacity-100 transition-opacity">Websites</Link>
+            <Link to="/systems" className="hover:opacity-100 transition-opacity">Systems</Link>
+            <Link to="/hosting" className="hover:opacity-100 transition-opacity">Hosting</Link>
+          </div>
           <button
+
             onClick={() => scrollToSection("contact")}
             className="group hidden sm:flex items-center space-x-2 text-xs md:text-sm font-bold tracking-[0.2em] uppercase bg-primary text-primary-foreground px-6 md:px-8 py-3 md:py-4 rounded-full shadow-lg hover:scale-105 transition-all"
           >
@@ -284,9 +311,13 @@ export default function Index() {
             exit={{ opacity: 0, x: 100 }}
             className="fixed inset-0 z-[60] bg-background flex flex-col items-center justify-center space-y-8 text-2xl font-serif"
           >
+            <Link to="/websites" onClick={() => setIsMenuOpen(false)}>Websites</Link>
+            <Link to="/systems" onClick={() => setIsMenuOpen(false)}>Systems</Link>
+            <Link to="/hosting" onClick={() => setIsMenuOpen(false)}>Hosting</Link>
             <button onClick={() => scrollToSection("contact")}>
               {t.nav.contact}
             </button>
+
             <button
               className="text-sm uppercase tracking-widest opacity-50"
               onClick={() => setIsMenuOpen(false)}
@@ -328,10 +359,20 @@ export default function Index() {
             {t.hero.tagline}
           </span>
           <h1 className="font-serif text-5xl md:text-8xl font-light tracking-tight mb-8 leading-tight">
-            {t.hero.title.split(",")[0]}
-            <br />
-            <span className="italic">{t.hero.title.split(",")[1]}</span>
+            <AnimatedText
+              as="span"
+              className="block"
+              text={t.hero.title.split(",")[0]}
+              delay={0.15}
+            />
+            <AnimatedText
+              as="span"
+              className="block italic"
+              text={t.hero.title.split(",")[1].trim()}
+              delay={0.5}
+            />
           </h1>
+
           <p className="font-serif text-lg md:text-2xl opacity-70 max-w-3xl mx-auto mb-12 leading-relaxed">
             {t.hero.description}
           </p>
@@ -363,9 +404,12 @@ export default function Index() {
             <span className="text-[10px] tracking-[0.5em] uppercase opacity-40 mb-4 block">
               What We Build
             </span>
-            <h2 className="font-serif text-4xl md:text-6xl mb-6">
-              Websites, Stores, <span className="italic">Software &amp; Systems</span>
-            </h2>
+            <AnimatedText
+              as="h2"
+              text="Websites, Stores, Software & Systems"
+              italicFrom={2}
+              className="font-serif text-4xl md:text-6xl mb-6 block"
+            />
             <p className="text-muted-foreground text-lg font-serif italic max-w-2xl mx-auto">
               One studio for the site customers see, the store that sells, and the systems that keep it all running.
 
@@ -411,15 +455,17 @@ export default function Index() {
 
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-24">
-            <h2 className="font-serif text-4xl md:text-6xl mb-6">
-              {t.pricing.title}
-            </h2>
+            <AnimatedText
+              as="h2"
+              text={t.pricing.title}
+              className="font-serif text-4xl md:text-6xl mb-6 block"
+            />
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
               {t.pricing.subtitle}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pricingOptions.map((opt, i) => {
               const isSelected = selectedPkg === i;
               return (
@@ -427,7 +473,7 @@ export default function Index() {
                   key={opt.label}
                   className={`relative p-10 rounded-3xl border transition-all flex flex-col ${
                     isSelected
-                      ? "bg-primary text-primary-foreground border-primary scale-105"
+                      ? "bg-primary text-primary-foreground border-primary md:scale-105"
                       : "bg-secondary/50 border-border hover:border-foreground/20"
                   }`}
                 >
@@ -437,16 +483,14 @@ export default function Index() {
                     </div>
                   )}
                   <h3 className="font-serif text-2xl mb-4 mt-2">{opt.label}</h3>
-                  <div className="mb-2">
-                    <span className="text-5xl font-bold">
-                      £{opt.priceMin.toLocaleString()}–£{opt.priceMax.toLocaleString()}
-                    </span>
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold">{opt.price}</span>
                     <span
                       className={`text-xs uppercase tracking-widest block mt-1 ${
                         isSelected ? "opacity-60" : "text-muted-foreground"
                       }`}
                     >
-                      {t.pricing.perPackage}
+                      {opt.note}
                     </span>
                   </div>
 
@@ -470,7 +514,7 @@ export default function Index() {
                     ))}
                   </ul>
 
-                  <div className="mt-auto pt-6 border-t border-current/10">
+                  <div className="mt-auto pt-6 border-t border-current/10 space-y-3">
                     <button
                       onClick={() => {
                         setSelectedPkg(i);
@@ -484,11 +528,22 @@ export default function Index() {
                     >
                       {t.pricing.select}
                     </button>
+                    <Link
+                      to={opt.href}
+                      className={`block text-center text-[10px] font-bold tracking-widest uppercase py-3 rounded-xl border transition-all ${
+                        isSelected
+                          ? "border-current/30 hover:bg-primary-foreground/10"
+                          : "border-border hover:bg-secondary"
+                      }`}
+                    >
+                      View details
+                    </Link>
                   </div>
                 </div>
               );
             })}
           </div>
+
         </div>
       </section>
 
@@ -502,9 +557,12 @@ export default function Index() {
             <span className="text-[10px] tracking-[0.5em] uppercase opacity-50 mb-6 block">
               {t.nav.contact}
             </span>
-            <h2 className="font-serif text-4xl md:text-6xl mb-6 leading-tight">
-              Let's <span className="italic">talk</span>
-            </h2>
+            <AnimatedText
+              as="h2"
+              text="Let's talk"
+              italicFrom={1}
+              className="font-serif text-4xl md:text-6xl mb-6 leading-tight block"
+            />
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
               Share a few details and we'll get back within 24 hours.
             </p>
@@ -606,9 +664,11 @@ export default function Index() {
             <span className="text-[10px] tracking-[0.5em] uppercase opacity-40 mb-4 block">
               01 — Process
             </span>
-            <h2 className="font-serif text-4xl md:text-6xl mb-6">
-              {t.services.title}
-            </h2>
+            <AnimatedText
+              as="h2"
+              text={t.services.title}
+              className="font-serif text-4xl md:text-6xl mb-6 block"
+            />
             <p className="text-muted-foreground text-lg font-serif italic max-w-2xl mx-auto">
               {t.services.subtitle}
             </p>
