@@ -419,7 +419,7 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pricingOptions.map((opt, i) => {
               const isSelected = selectedPkg === i;
               return (
@@ -427,7 +427,7 @@ export default function Index() {
                   key={opt.label}
                   className={`relative p-10 rounded-3xl border transition-all flex flex-col ${
                     isSelected
-                      ? "bg-primary text-primary-foreground border-primary scale-105"
+                      ? "bg-primary text-primary-foreground border-primary md:scale-105"
                       : "bg-secondary/50 border-border hover:border-foreground/20"
                   }`}
                 >
@@ -437,16 +437,14 @@ export default function Index() {
                     </div>
                   )}
                   <h3 className="font-serif text-2xl mb-4 mt-2">{opt.label}</h3>
-                  <div className="mb-2">
-                    <span className="text-5xl font-bold">
-                      £{opt.priceMin.toLocaleString()}–£{opt.priceMax.toLocaleString()}
-                    </span>
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold">{opt.price}</span>
                     <span
                       className={`text-xs uppercase tracking-widest block mt-1 ${
                         isSelected ? "opacity-60" : "text-muted-foreground"
                       }`}
                     >
-                      {t.pricing.perPackage}
+                      {opt.note}
                     </span>
                   </div>
 
@@ -470,7 +468,7 @@ export default function Index() {
                     ))}
                   </ul>
 
-                  <div className="mt-auto pt-6 border-t border-current/10">
+                  <div className="mt-auto pt-6 border-t border-current/10 space-y-3">
                     <button
                       onClick={() => {
                         setSelectedPkg(i);
@@ -484,11 +482,22 @@ export default function Index() {
                     >
                       {t.pricing.select}
                     </button>
+                    <Link
+                      to={opt.href}
+                      className={`block text-center text-[10px] font-bold tracking-widest uppercase py-3 rounded-xl border transition-all ${
+                        isSelected
+                          ? "border-current/30 hover:bg-primary-foreground/10"
+                          : "border-border hover:bg-secondary"
+                      }`}
+                    >
+                      View details
+                    </Link>
                   </div>
                 </div>
               );
             })}
           </div>
+
         </div>
       </section>
 
