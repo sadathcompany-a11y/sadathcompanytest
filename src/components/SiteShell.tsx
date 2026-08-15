@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import sadathLogo from "@/assets/sadath-logo.png";
@@ -10,8 +10,6 @@ export const navPages = [
 ];
 
 export function SiteShell({ children }: { children: ReactNode }) {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 md:px-12 bg-background/80 backdrop-blur-md border-b border-border">
@@ -26,13 +24,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
               </Link>
             ))}
           </div>
-          <button
-            onClick={() => navigate("/#contact")}
+          <a
+            href="/#contact"
             className="group flex items-center gap-2 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase bg-primary text-primary-foreground px-5 md:px-7 py-3 rounded-full hover:scale-105 transition-all"
           >
             <span>Get Started</span>
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-          </button>
+          </a>
         </div>
       </nav>
 
