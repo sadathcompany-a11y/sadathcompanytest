@@ -132,15 +132,16 @@ const pricingOptions = [
 
 
 const serviceOptions = [
-  "Custom Systems / Business Solutions (from £600)",
-  "Booking or Scheduling System",
   "Custom Website (from £400)",
-  "E-Commerce / Custom Site",
+  "Custom Systems / Business Solutions (from £600)",
   "Managed Hosting (£8/month)",
+  "E-Commerce / Custom Site",
+  "Booking or Scheduling System",
   "Design Overhaul / Rebrand",
   "Consulting",
   "Other",
 ];
+
 
 
 const inputClasses =
