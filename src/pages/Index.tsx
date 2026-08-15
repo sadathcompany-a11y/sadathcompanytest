@@ -272,8 +272,14 @@ export default function Index() {
           />
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-6">
+          <div className="hidden md:flex items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase opacity-60">
+            <Link to="/websites" className="hover:opacity-100 transition-opacity">Websites</Link>
+            <Link to="/systems" className="hover:opacity-100 transition-opacity">Systems</Link>
+            <Link to="/hosting" className="hover:opacity-100 transition-opacity">Hosting</Link>
+          </div>
           <button
+
             onClick={() => scrollToSection("contact")}
             className="group hidden sm:flex items-center space-x-2 text-xs md:text-sm font-bold tracking-[0.2em] uppercase bg-primary text-primary-foreground px-6 md:px-8 py-3 md:py-4 rounded-full shadow-lg hover:scale-105 transition-all"
           >
