@@ -40,8 +40,18 @@ export default function Terms() {
           <h2 className="font-serif text-xl text-foreground">7. Client Responsibilities</h2>
           <p>You agree to provide timely feedback, accurate content, brand assets, and approvals required to progress the project. We are not liable for delays caused by missing inputs.</p>
 
-          <h2 className="font-serif text-xl text-foreground">8. Intellectual Property</h2>
-          <p>On receipt of full and final payment, ownership of the final deliverables (excluding third-party assets, fonts, plugins, and our pre-existing tools and frameworks) transfers to you. We retain the right to display the work in our portfolio and case studies unless restricted in your SOW.</p>
+          <h2 className="font-serif text-xl text-foreground">8. Ownership of Deliverables</h2>
+          <p><strong className="text-foreground">On completion of the project and receipt of full and final payment, you own all of the products we build for you outright</strong> — the website, system, source code, designs, and content produced under your SOW. There is no licence fee, no lock-in, and you are free to host, modify, or move the work wherever you choose.</p>
+          <p>Excluded from this transfer are third-party assets, fonts, plugins, and our pre-existing internal tools and frameworks, which are provided to you under their respective licences. We retain the right to display the work in our portfolio and case studies unless restricted in your SOW.</p>
+
+          <h2 className="font-serif text-xl text-foreground">11. Support After Launch</h2>
+          <p>Every project includes <strong className="text-foreground">3 months of post-launch support</strong> from the completion date. Support work during this period is billed at <strong className="text-foreground">£10 per hour</strong>, charged only for time actually worked and agreed with you in advance.</p>
+          <p><strong className="text-foreground">All training on how to use and update your website or system is provided free of charge</strong>, including handover sessions and documentation, and is never billed as support time.</p>
+          <p>Should you wish to extend cover beyond the initial 3 months, longer support and maintenance arrangements can be negotiated with us and set out in a separate agreement.</p>
+
+          <h2 className="font-serif text-xl text-foreground">12. Hosting</h2>
+          <p>Managed hosting is optional. If you would like us to host and maintain your site, our plans are <strong className="text-foreground">£400 for 4 years (equivalent to £8 per month)</strong>, or <strong className="text-foreground">£125 per year (equivalent to £10 per month)</strong>. The 4-year plan saves you £100 compared with paying annually.</p>
+          <p>Hosting includes SSL, security patching, monitoring, daily backups, and domain and DNS management. You are under no obligation to purchase hosting from us — if you prefer to host elsewhere, we hand over the code and help your team deploy it at no cost.</p>
 
           <h2 className="font-serif text-xl text-foreground">9. Third-Party Services</h2>
           <p>Projects may rely on third-party platforms such as Stripe, Shopify, hosting providers, and CMS vendors. These services are governed by their own terms, and we are not responsible for their availability, pricing changes, or downtime.</p>
@@ -49,19 +59,19 @@ export default function Terms() {
           <h2 className="font-serif text-xl text-foreground">10. Confidentiality</h2>
           <p>Both parties agree to keep confidential information shared during the engagement private. Mutual NDAs can be signed on request before the discovery phase.</p>
 
-          <h2 className="font-serif text-xl text-foreground">11. Warranty and Liability</h2>
+          <h2 className="font-serif text-xl text-foreground">13. Warranty and Liability</h2>
           <p>We deliver work with reasonable skill and care. To the fullest extent permitted by law, our total liability for any claim arising from a project is limited to the fees paid by you under the relevant SOW. We are not liable for indirect, consequential, or loss-of-profit damages.</p>
 
-          <h2 className="font-serif text-xl text-foreground">12. Termination</h2>
+          <h2 className="font-serif text-xl text-foreground">14. Termination</h2>
           <p>Either party may terminate an engagement in writing. Fees for work completed up to the termination date remain payable, and deposits remain non-refundable.</p>
 
-          <h2 className="font-serif text-xl text-foreground">13. Governing Law</h2>
+          <h2 className="font-serif text-xl text-foreground">15. Governing Law</h2>
           <p>These terms are governed by the laws of England and Wales. Any disputes will be subject to the exclusive jurisdiction of the English courts.</p>
 
-          <h2 className="font-serif text-xl text-foreground">14. Updates to These Terms</h2>
+          <h2 className="font-serif text-xl text-foreground">16. Updates to These Terms</h2>
           <p>We may update these terms from time to time. The latest version will always be published on this page.</p>
 
-          <h2 className="font-serif text-xl text-foreground">15. Contact</h2>
+          <h2 className="font-serif text-xl text-foreground">17. Contact</h2>
           <p>For questions about these terms or your engagement, email <a href="mailto:contact@sadathcompany.com" className="text-foreground underline underline-offset-2">contact@sadathcompany.com</a>.</p>
         </div>
       </div>
