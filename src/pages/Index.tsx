@@ -309,9 +309,13 @@ export default function Index() {
             exit={{ opacity: 0, x: 100 }}
             className="fixed inset-0 z-[60] bg-background flex flex-col items-center justify-center space-y-8 text-2xl font-serif"
           >
+            <Link to="/websites" onClick={() => setIsMenuOpen(false)}>Websites</Link>
+            <Link to="/systems" onClick={() => setIsMenuOpen(false)}>Systems</Link>
+            <Link to="/hosting" onClick={() => setIsMenuOpen(false)}>Hosting</Link>
             <button onClick={() => scrollToSection("contact")}>
               {t.nav.contact}
             </button>
+
             <button
               className="text-sm uppercase tracking-widest opacity-50"
               onClick={() => setIsMenuOpen(false)}
