@@ -132,10 +132,11 @@ const pricingOptions = [
 
 
 const serviceOptions = [
-  "Custom Systems (Dashboard / Tool / Automation)",
+  "Custom Systems / Business Solutions (from £600)",
   "Booking or Scheduling System",
-  "Custom Website (£400–£800)",
+  "Custom Website (from £400)",
   "E-Commerce / Custom Site",
+  "Managed Hosting (£8/month)",
   "Design Overhaul / Rebrand",
   "Consulting",
   "Other",
