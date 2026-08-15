@@ -347,10 +347,20 @@ export default function Index() {
             {t.hero.tagline}
           </span>
           <h1 className="font-serif text-5xl md:text-8xl font-light tracking-tight mb-8 leading-tight">
-            {t.hero.title.split(",")[0]}
-            <br />
-            <span className="italic">{t.hero.title.split(",")[1]}</span>
+            <AnimatedText
+              as="span"
+              className="block"
+              text={t.hero.title.split(",")[0]}
+              delay={0.15}
+            />
+            <AnimatedText
+              as="span"
+              className="block italic"
+              text={t.hero.title.split(",")[1].trim()}
+              delay={0.5}
+            />
           </h1>
+
           <p className="font-serif text-lg md:text-2xl opacity-70 max-w-3xl mx-auto mb-12 leading-relaxed">
             {t.hero.description}
           </p>
