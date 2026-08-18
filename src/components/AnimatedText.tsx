@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import type { ReactNode } from "react";
+import { forwardRef, type ReactNode } from "react";
 
 type AnimatedTextProps = {
   text: string;
@@ -11,21 +11,19 @@ type AnimatedTextProps = {
 };
 
 /**
- * Word-by-word reveal. Each word rises, un-blurs and fades in with a
- * staggered delay for a smooth editorial transition.
+ * Word-by-word reveal. Each word rises and fades in with a staggered
+ * delay for a smooth editorial transition.
  */
-export function AnimatedText({
-  text,
-  className,
-  delay = 0,
-  as = "span",
-  italicFrom,
-}: AnimatedTextProps) {
+export const AnimatedText = forwardRef<HTMLElement, AnimatedTextProps>(function AnimatedText(
+  { text, className, delay = 0, as = "span", italicFrom },
+  ref,
+) {
   const Tag = motion[as] as typeof motion.span;
   const words = text.split(" ");
 
   return (
     <Tag
+      ref={ref as React.Ref<HTMLSpanElement>}
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -38,14 +36,13 @@ export function AnimatedText({
       {words.map((word, i) => (
         <motion.span
           key={`${word}-${i}`}
-          className="inline-block will-change-transform"
+          className="inline-block"
           variants={{
-            hidden: { opacity: 0, y: "0.45em", filter: "blur(6px)" },
+            hidden: { opacity: 0, y: "0.35em" },
             visible: {
               opacity: 1,
               y: 0,
-              filter: "blur(0px)",
-              transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+              transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
             },
           }}
         >
@@ -57,19 +54,15 @@ export function AnimatedText({
       ))}
     </Tag>
   );
-}
+});
 
-export function FadeIn({
-  children,
-  delay = 0,
-  className,
-}: {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
-}) {
+export const FadeIn = forwardRef<
+  HTMLDivElement,
+  { children: ReactNode; delay?: number; className?: string }
+>(function FadeIn({ children, delay = 0, className }, ref) {
   return (
     <motion.div
+      ref={ref}
       className={className}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -79,4 +72,4 @@ export function FadeIn({
       {children}
     </motion.div>
   );
-}
+});
