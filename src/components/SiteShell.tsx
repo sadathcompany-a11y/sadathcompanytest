@@ -11,10 +11,26 @@ export const navPages = [
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 md:px-12 bg-background/80 backdrop-blur-md border-b border-border">
+    <div className="relative min-h-screen bg-background text-foreground font-sans selection:bg-muted-foreground/30">
+      {/* Ambient hero backdrop — matches the homepage */}
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-[70vh] overflow-hidden z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          disablePictureInPicture
+          className="object-cover w-full h-full opacity-20 grayscale transform-gpu [contain:paint]"
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+      </div>
+
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 md:px-12 bg-background/60 backdrop-blur-md border-b border-border">
         <Link to="/" aria-label="Sadath Company home" className="flex items-center">
-          <img src={sadathLogo} alt="Sadath Company" className="h-16 md:h-24 w-auto object-contain" />
+          <img src={sadathLogo} alt="Sadath Company" className="h-20 md:h-32 w-auto object-contain" />
         </Link>
         <div className="flex items-center gap-6">
           <div className="hidden md:flex items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase opacity-60">
@@ -26,7 +42,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </div>
           <a
             href="/#contact"
-            className="group flex items-center gap-2 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase bg-primary text-primary-foreground px-5 md:px-7 py-3 rounded-full hover:scale-105 transition-all"
+            className="group flex items-center gap-2 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase bg-primary text-primary-foreground px-5 md:px-7 py-3 rounded-full shadow-lg hover:scale-105 transition-all"
           >
             <span>Get Started</span>
             <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -34,9 +50,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
         </div>
       </nav>
 
-      <main className="pt-32 md:pt-40">{children}</main>
+      <main className="relative z-10 pt-40 md:pt-52">{children}</main>
 
-      <footer className="py-16 px-6 border-t border-border mt-20">
+
+      <footer className="relative z-10 py-16 px-6 border-t border-border mt-20">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-[11px] leading-relaxed opacity-50 text-center md:text-left space-y-1">
             <p className="tracking-[0.15em] uppercase">

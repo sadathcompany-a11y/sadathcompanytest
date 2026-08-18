@@ -2,8 +2,8 @@ import {
   CheckCircle2,
   LayoutDashboard,
   CalendarClock,
-  Workflow,
-  Plug,
+  UtensilsCrossed,
+  Database,
   ArrowRight,
 } from "lucide-react";
 import { SiteShell } from "@/components/SiteShell";
@@ -17,7 +17,7 @@ const tiers = [
     note: "one-off project fee",
     features: [
       "Discovery & process mapping",
-      "Custom dashboard, tool or automation",
+      "Booking, portal, menu or data system",
       "Free custom to-do list included",
       "User authentication & roles",
       "Integrations (Stripe, email, APIs)",
@@ -33,19 +33,19 @@ const tiers = [
     features: [
       "Everything in Custom System",
       "Multiple connected modules",
-      "Booking, scheduling or client portals",
-      "Reporting dashboards & data clean-up",
-      "Workflow automation across your tools",
+      "Multi-site booking, portals & menus",
+      "Reporting & data management",
+      "Integrations across your existing tools",
       "Priority support arrangements available",
     ],
   },
 ];
 
 const highlights = [
-  { icon: <LayoutDashboard size={18} />, label: "Dashboards & admin panels" },
-  { icon: <CalendarClock size={18} />, label: "Booking & scheduling tools" },
-  { icon: <Workflow size={18} />, label: "Workflow automation" },
-  { icon: <Plug size={18} />, label: "API & third-party integrations" },
+  { icon: <CalendarClock size={18} />, label: "Booking & scheduling" },
+  { icon: <LayoutDashboard size={18} />, label: "Client & customer portals" },
+  { icon: <UtensilsCrossed size={18} />, label: "Restaurant menus" },
+  { icon: <Database size={18} />, label: "Data management" },
 ];
 
 export default function Systems() {
@@ -53,7 +53,7 @@ export default function Systems() {
     <SiteShell>
       <Seo
         title="Custom Systems & Business Solutions Pricing — Sadath Company"
-        description="Custom business systems from £600: dashboards, booking tools, portals and workflow automation, with free training and 3 months of support."
+        description="Business systems from £600: booking and scheduling, client and customer portals, restaurant menus and data management, with free training and 3 months of support."
         path="/systems"
       />
       <section className="px-6 md:px-12">
@@ -69,8 +69,8 @@ export default function Systems() {
           />
           <FadeIn delay={0.15}>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Internal tools built around how your business actually works. Systems and business
-              solutions start at <span className="text-foreground font-medium">£600</span>.
+              Booking and scheduling, client and customer portals, restaurant menus and data
+              management — built around how your business actually works. Systems start at <span className="text-foreground font-medium">£600</span>.
             </p>
           </FadeIn>
         </div>
