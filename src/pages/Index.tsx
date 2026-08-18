@@ -10,13 +10,13 @@ import {
   Compass,
   LayoutDashboard,
   CalendarClock,
-  Workflow,
+  UtensilsCrossed,
+  Database,
   Globe,
   ShoppingBag,
   Palette,
   CreditCard,
   Boxes,
-  Plug,
   ShieldCheck,
   X,
 } from "lucide-react";
@@ -133,7 +133,7 @@ const pricingOptions = [
 
 const serviceOptions = [
   "Custom Website (from £400)",
-  "Custom Systems / Business Solutions (from £600)",
+  "Business Systems (from £600)",
   "Managed Hosting (£8/month)",
   "E-Commerce / Custom Site",
   "Booking or Scheduling System",
@@ -239,8 +239,8 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-muted-foreground/30">
       <Seo
-        title="Sadath Company — Websites, E-Commerce, Software &amp; Systems"
-        description="UK studio building websites, online stores, custom software and internal systems for startups and small businesses. Dashboards, booking, automation and integrations."
+        title="Sadath Company — Websites, E-Commerce &amp; Business Systems"
+        description="UK studio building websites, online stores and business systems — booking and scheduling, client portals, restaurant menus and data management."
         path="/"
 
       />
@@ -398,7 +398,7 @@ export default function Index() {
             </span>
             <AnimatedText
               as="h2"
-              text="Websites, Stores, Software & Systems"
+              text="Websites, Stores & Systems"
               italicFrom={2}
               className="font-serif text-4xl md:text-6xl mb-6 block"
             />
@@ -408,7 +408,7 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {whatWeBuild.map((block, i) => (
               <motion.div
                 key={block.title}
