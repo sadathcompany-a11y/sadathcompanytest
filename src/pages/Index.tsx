@@ -35,10 +35,10 @@ const t = {
     contact: "Get Started",
   },
   hero: {
-    tagline: "Websites · E-Commerce · Software · Systems",
+    tagline: "Websites · E-Commerce · Systems",
     title: "Systems that run it, websites that grow it.",
     description:
-      "Sadath Company is a UK studio building websites, online stores, custom software, and the internal systems behind them — from booking and dashboards to workflow automation.",
+      "Sadath Company is a UK studio building websites, online stores, and the internal systems behind them — booking and scheduling, client portals, restaurant menus and data management.",
     cta: "Get Started",
   },
 
@@ -52,7 +52,7 @@ const t = {
       },
       {
         title: "Strategy & Wireframes",
-        desc: "We map flows, data models, and screens — for software or site — before a single pixel is drawn.",
+        desc: "We map flows, data models, and screens — for your system or site — before a single pixel is drawn.",
       },
       {
         title: "Design",
@@ -177,25 +177,17 @@ const whatWeBuild = [
     ],
   },
   {
-    title: "Software",
-    tagline: "Replace the spreadsheet. Save hours every week.",
-    desc: "Internal tools tailored to how your business actually works — so your team stops fighting software and starts moving faster.",
-    items: [
-      { icon: <LayoutDashboard size={18} />, label: "Dashboards & admin panels" },
-      { icon: <CalendarClock size={18} />, label: "Booking & scheduling tools" },
-      { icon: <Code2 size={18} />, label: "Client & customer portals" },
-    ],
-  },
-  {
     title: "Systems",
-    tagline: "Connect the tools you already pay for.",
-    desc: "We automate the manual steps between your apps — quotes, invoices, CRM, email — so nothing gets rekeyed twice.",
+    tagline: "Replace the spreadsheet. Save hours every week.",
+    desc: "Internal systems built around how your business actually works — booking, portals, menus and the data behind them.",
     items: [
-      { icon: <Workflow size={18} />, label: "Workflow automation" },
-      { icon: <Plug size={18} />, label: "API & third-party integrations" },
-      { icon: <Sparkles size={18} />, label: "Reporting & data clean-up" },
+      { icon: <CalendarClock size={18} />, label: "Booking & scheduling" },
+      { icon: <LayoutDashboard size={18} />, label: "Client & customer portals" },
+      { icon: <UtensilsCrossed size={18} />, label: "Restaurant menus" },
+      { icon: <Database size={18} />, label: "Data management" },
     ],
   },
+
 ];
 
 
