@@ -333,7 +333,7 @@ export default function Index() {
             playsInline
             preload="metadata"
             disablePictureInPicture
-            className="object-cover w-full h-full opacity-30 grayscale transform-gpu [contain:paint]"
+            className="object-cover w-full h-full opacity-30 transform-gpu [contain:paint]"
           >
             <source src="/videos/hero-bg.mp4" type="video/mp4" />
           </video>
