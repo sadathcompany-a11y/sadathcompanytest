@@ -202,6 +202,8 @@ export default function Index() {
     setIsMenuOpen(false);
   };
 
+  const WHATSAPP_NUMBER = "447405922781";
+
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -212,25 +214,23 @@ export default function Index() {
     const message = String(fd.get("message") || "").slice(0, 1000);
 
     setIsSending(true);
-    try {
-      const { error } = await supabase.functions.invoke("send-contact-email", {
-        body: { name, email, project, message },
-      });
-      if (error) throw error;
-      setContactName(name.split(" ")[0] || "");
-      setShowThanks(true);
-      form.reset();
-    } catch (err) {
-      console.error("Contact form error:", err);
-      toast({
-        title: "Message not sent",
-        description:
-          "Something went wrong. Please email contact@sadathcompany.com directly.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSending(false);
-    }
+    await new Promise((resolve) => setTimeout(resolve, 300));
+
+    const text = [
+      `Hi, I'm ${name}.`,
+      `Service: ${project}`,
+      `Email: ${email}`,
+      "",
+      message,
+    ].join("\n");
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+
+    setContactName(name.split(" ")[0] || "");
+    setShowThanks(true);
+    form.reset();
+    setIsSending(false);
   };
 
 
