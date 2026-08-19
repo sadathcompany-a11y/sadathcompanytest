@@ -540,12 +540,12 @@ export default function Index() {
             </span>
             <AnimatedText
               as="h2"
-              text="Let's talk"
-              italicFrom={1}
+              text="Message us on WhatsApp"
+              italicFrom={3}
               className="font-serif text-4xl md:text-6xl mb-6 leading-tight block"
             />
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Share a few details and we'll get back within 24 hours.
+              Fill in a few details and we'll open WhatsApp so you can send your enquiry straight through.
             </p>
           </div>
 
@@ -616,13 +616,13 @@ export default function Index() {
               disabled={isSending}
               className="w-full group flex items-center justify-center space-x-3 text-[11px] font-bold tracking-[0.2em] uppercase bg-primary text-primary-foreground py-5 rounded-2xl transition-all hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span>{isSending ? "Sending…" : "Send Message"}</span>
+              <span>{isSending ? "Opening WhatsApp…" : "Send on WhatsApp"}</span>
               <ArrowRight size={16} />
             </button>
 
 
             <p className="text-center text-sm opacity-60">
-              or reach out on{" "}
+              or email{" "}
               <a
                 href="mailto:contact@sadathcompany.com"
                 className="underline underline-offset-4 hover:opacity-100 opacity-80 transition-opacity"
@@ -777,8 +777,8 @@ export default function Index() {
                 transition={{ delay: 0.35, duration: 0.4 }}
                 className="text-muted-foreground leading-relaxed mb-10"
               >
-                Your message is on its way to our team. We read every enquiry personally and will
-                be in touch within 24 hours to arrange a discovery call.
+                WhatsApp should have opened with your enquiry ready to send. If it didn't, you can
+                message us directly on +44 7405 922781.
               </motion.p>
               <motion.button
                 initial={{ opacity: 0 }}
