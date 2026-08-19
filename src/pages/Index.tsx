@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
+import { HeroVideo } from "@/components/HeroVideo";
 import {
   Menu,
   ArrowRight,
@@ -326,17 +327,7 @@ export default function Index() {
         className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            disablePictureInPicture
-            className="object-cover w-full h-full opacity-30 transform-gpu [contain:paint]"
-          >
-            <source src="/videos/hero-bg.mp4" type="video/mp4" />
-          </video>
+          <HeroVideo className="opacity-30" />
 
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" />
         </div>

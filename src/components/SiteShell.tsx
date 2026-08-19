@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import sadathLogo from "@/assets/sadath-logo.png";
+import { HeroVideo } from "@/components/HeroVideo";
 
 export const navPages = [
   { to: "/websites", label: "Websites" },
@@ -14,17 +15,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <div className="relative min-h-screen bg-background text-foreground font-sans selection:bg-muted-foreground/30">
       {/* Ambient hero backdrop — matches the homepage */}
       <div className="pointer-events-none absolute top-0 left-0 right-0 h-[70vh] overflow-hidden z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          disablePictureInPicture
-          className="object-cover w-full h-full opacity-20 transform-gpu [contain:paint]"
-        >
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        </video>
+        <HeroVideo className="opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
       </div>
 
