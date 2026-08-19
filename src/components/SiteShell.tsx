@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import sadathLogo from "@/assets/sadath-logo.png";
+import { HeroVideo } from "@/components/HeroVideo";
 
 export const navPages = [
   { to: "/websites", label: "Websites" },
