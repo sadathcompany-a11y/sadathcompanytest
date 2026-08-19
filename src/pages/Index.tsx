@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
+import { HeroVideo } from "@/components/HeroVideo";
 import {
   Menu,
   ArrowRight,
