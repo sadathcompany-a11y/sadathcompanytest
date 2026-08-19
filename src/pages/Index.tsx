@@ -23,8 +23,6 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "@/hooks/use-toast";
 import sadathLogo from "@/assets/sadath-logo.png";
 import { Seo } from "@/components/Seo";
 import { AnimatedText } from "@/components/AnimatedText";
