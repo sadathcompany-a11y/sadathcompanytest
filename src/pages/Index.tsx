@@ -152,40 +152,6 @@ const processSteps = [
   { icon: <Rocket size={20} />, ...t.services.steps[4] },
 ];
 
-const whatWeBuild = [
-  {
-    title: "Websites",
-    tagline: "Sites that make small teams look established.",
-    desc: "Custom-designed, fast, accessible websites for startups and small businesses — with hosting, SEO, and domain setup handled.",
-    items: [
-      { icon: <Globe size={18} />, label: "Marketing & startup websites" },
-      { icon: <Palette size={18} />, label: "Brand & design overhauls" },
-      { icon: <ShieldCheck size={18} />, label: "Managed hosting & maintenance" },
-    ],
-  },
-  {
-    title: "E-Commerce",
-    tagline: "Sell online without fighting your platform.",
-    desc: "Online stores built around your products and margins, with payments, shipping, and stock wired in from day one.",
-    items: [
-      { icon: <ShoppingBag size={18} />, label: "Custom stores (Stripe / Shopify)" },
-      { icon: <CreditCard size={18} />, label: "Payments, checkout & subscriptions" },
-      { icon: <Boxes size={18} />, label: "Inventory & order management" },
-    ],
-  },
-  {
-    title: "Systems",
-    tagline: "Replace the spreadsheet. Save hours every week.",
-    desc: "Internal systems built around how your business actually works — booking, portals, menus and the data behind them.",
-    items: [
-      { icon: <CalendarClock size={18} />, label: "Booking & scheduling" },
-      { icon: <LayoutDashboard size={18} />, label: "Client & customer portals" },
-      { icon: <UtensilsCrossed size={18} />, label: "Restaurant menus" },
-      { icon: <Database size={18} />, label: "Data management" },
-    ],
-  },
-
-];
 
 
 export default function Index() {
