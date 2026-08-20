@@ -366,39 +366,79 @@ export default function Index() {
             />
             <p className="text-muted-foreground text-lg font-serif italic max-w-2xl mx-auto">
               One studio for the site customers see, the store that sells, and the systems that keep it all running.
-
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-            {whatWeBuild.map((block, i) => (
-              <motion.div
-                key={block.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="h-full flex flex-col p-8 rounded-2xl border border-border bg-card hover:bg-secondary/40 hover:-translate-y-1 transition-all shadow-sm"
-              >
-                <h3 className="font-serif text-2xl mb-2">{block.title}</h3>
-                <p className="text-[10px] uppercase tracking-[0.2em] opacity-50 mb-5">
-                  {block.tagline}
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-8">
-                  {block.desc}
-                </p>
-                <ul className="space-y-4 mt-auto">
-                  {block.items.map((item) => (
-                    <li key={item.label} className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center flex-shrink-0">
-                        {item.icon}
-                      </div>
-                      <span className="text-sm">{item.label}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+            {buildPackages.map((block, i) => {
+              const isSelected = selectedService === block.serviceLabel;
+              return (
+                <motion.div
+                  key={block.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className={`h-full flex flex-col p-8 rounded-2xl border transition-all shadow-sm ${
+                    isSelected
+                      ? "bg-primary text-primary-foreground border-primary md:scale-[1.02]"
+                      : "bg-card border-border hover:bg-secondary/40 hover:-translate-y-1"
+                  }`}
+                >
+                  <h3 className="font-serif text-2xl mb-2">{block.title}</h3>
+                  <p className="text-[10px] uppercase tracking-[0.2em] opacity-60 mb-5">
+                    {block.tagline}
+                  </p>
+                  <p className={`text-sm leading-relaxed mb-8 ${isSelected ? "opacity-90" : "text-muted-foreground"}`}>
+                    {block.desc}
+                  </p>
+
+                  <div className="mb-6">
+                    <span className="text-3xl font-bold">{block.price}</span>
+                    <span className={`text-xs uppercase tracking-widest block mt-1 ${isSelected ? "opacity-70" : "text-muted-foreground"}`}>
+                      {block.note}
+                    </span>
+                  </div>
+
+                  <ul className="space-y-4 mt-auto mb-8">
+                    {block.items.map((item) => (
+                      <li key={item.label} className="flex items-center gap-3">
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${isSelected ? "bg-primary-foreground text-primary" : "bg-primary text-primary-foreground"}`}>
+                          {item.icon}
+                        </div>
+                        <span className="text-sm">{item.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-auto pt-6 border-t border-current/10 space-y-3">
+                    <button
+                      onClick={() => {
+                        setSelectedService(block.serviceLabel);
+                        scrollToSection("contact");
+                      }}
+                      className={`w-full py-4 rounded-xl text-[10px] font-bold tracking-widest uppercase transition-all ${
+                        isSelected
+                          ? "bg-primary-foreground text-primary"
+                          : "bg-primary text-primary-foreground hover:opacity-90"
+                      }`}
+                    >
+                      Get a quote
+                    </button>
+                    <Link
+                      to={block.href}
+                      className={`block text-center text-[10px] font-bold tracking-widest uppercase py-3 rounded-xl border transition-all ${
+                        isSelected
+                          ? "border-current/30 hover:bg-primary-foreground/10"
+                          : "border-border hover:bg-secondary"
+                      }`}
+                    >
+                      View details
+                    </Link>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
 
         </div>
