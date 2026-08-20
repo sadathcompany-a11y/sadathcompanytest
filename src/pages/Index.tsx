@@ -222,6 +222,8 @@ export default function Index() {
       `Email: ${email}`,
       "",
       message,
+      "",
+      "Get in touch on WhatsApp (+44 7405 922781) or email contact@sadathcompany.com",
     ].join("\n");
 
     const encodedText = encodeURIComponent(text);
