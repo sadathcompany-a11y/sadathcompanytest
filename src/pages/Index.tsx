@@ -224,8 +224,15 @@ export default function Index() {
       message,
     ].join("\n");
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
-    window.open(url, "_blank", "noopener,noreferrer");
+    const encodedText = encodeURIComponent(text);
+    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(
+      navigator.userAgent
+    );
+    const url = isMobile
+      ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedText}`
+      : `https://web.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedText}`;
+
+    window.location.href = url;
 
     setContactName(name.split(" ")[0] || "");
     setShowThanks(true);
