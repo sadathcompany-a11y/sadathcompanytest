@@ -190,7 +190,7 @@ const whatWeBuild = [
 
 export default function Index() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedPkg, setSelectedPkg] = useState(0);
+  const [selectedService, setSelectedService] = useState(buildPackages[0].serviceLabel);
   const [showThanks, setShowThanks] = useState(false);
   const [contactName, setContactName] = useState("");
   const [isSending, setIsSending] = useState(false);
