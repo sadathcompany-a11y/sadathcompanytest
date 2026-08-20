@@ -81,51 +81,49 @@ const t = {
   },
 };
 
-const pricingOptions = [
+const buildPackages = [
   {
-    label: "Websites",
+    title: "Websites",
+    tagline: "Sites that make small teams look established.",
+    desc: "Custom-designed, fast, accessible websites for startups and small businesses — with hosting, SEO, and domain setup handled.",
+    items: [
+      { icon: <Globe size={18} />, label: "Marketing & startup websites" },
+      { icon: <Palette size={18} />, label: "Brand & design overhauls" },
+      { icon: <ShieldCheck size={18} />, label: "Managed hosting & maintenance" },
+    ],
     price: "From £400",
     note: "one-off project fee",
+    serviceLabel: "Custom Website (from £400)",
     href: "/websites",
-    features: [
-      "Unlimited pages, individually designed",
-      "Mobile-first responsive design",
-      "Brand & design direction",
-      "Basic SEO setup & analytics",
-      "Domain configuration",
-      "Free training + 3 months support",
-    ],
-    badge: null,
   },
   {
-    label: "Systems",
+    title: "E-Commerce",
+    tagline: "Sell online without fighting your platform.",
+    desc: "Online stores built around your products and margins, with payments, shipping, and stock wired in from day one.",
+    items: [
+      { icon: <ShoppingBag size={18} />, label: "Custom stores (Stripe / Shopify)" },
+      { icon: <CreditCard size={18} />, label: "Payments, checkout & subscriptions" },
+      { icon: <Boxes size={18} />, label: "Inventory & order management" },
+    ],
+    price: "From £900",
+    note: "one-off project fee",
+    serviceLabel: "E-Commerce / Custom Site",
+    href: "/websites",
+  },
+  {
+    title: "Systems",
+    tagline: "Replace the spreadsheet. Save hours every week.",
+    desc: "Internal systems built around how your business actually works — booking, portals, menus and the data behind them.",
+    items: [
+      { icon: <CalendarClock size={18} />, label: "Booking & scheduling" },
+      { icon: <LayoutDashboard size={18} />, label: "Client & customer portals" },
+      { icon: <UtensilsCrossed size={18} />, label: "Restaurant menus" },
+      { icon: <Database size={18} />, label: "Data management" },
+    ],
     price: "From £600",
     note: "business solutions",
+    serviceLabel: "Business Systems (from £600)",
     href: "/systems",
-    features: [
-      "Discovery & process mapping",
-      "Custom dashboard, tool or automation",
-      "Free custom to-do list included",
-      "User authentication & roles",
-      "Integrations (Stripe, email, APIs)",
-      "Free team training & handover",
-    ],
-    badge: "Most Impact",
-  },
-  {
-    label: "Hosting",
-    price: "From £8/mo",
-    note: "£400 for 4 years · save £100",
-    href: "/hosting",
-    features: [
-      "£400 once for 4 years (£8/month)",
-      "Or £125 per year (£10/month)",
-      "SSL, security patches & monitoring",
-      "Daily backups & uptime checks",
-      "Domain & DNS management",
-      "Completely optional — your choice",
-    ],
-    badge: null,
   },
 ];
 
