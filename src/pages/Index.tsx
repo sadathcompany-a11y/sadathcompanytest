@@ -35,7 +35,7 @@ const t = {
   },
   hero: {
     tagline: "Websites · E-Commerce · Systems",
-    title: "Systems that run it, websites that grow it.",
+    title: "Websites that grow it, systems that run it.",
     description:
       "Sadath Company is a UK studio building websites, online stores, and the internal systems behind them — booking and scheduling, client portals, restaurant menus and data management.",
     cta: "Get Started",
@@ -81,51 +81,49 @@ const t = {
   },
 };
 
-const pricingOptions = [
+const buildPackages = [
   {
-    label: "Websites",
+    title: "Websites",
+    tagline: "Sites that make small teams look established.",
+    desc: "Custom-designed, fast, accessible websites for startups and small businesses — with hosting, SEO, and domain setup handled.",
+    items: [
+      { icon: <Globe size={18} />, label: "Marketing & startup websites" },
+      { icon: <Palette size={18} />, label: "Brand & design overhauls" },
+      { icon: <ShieldCheck size={18} />, label: "Managed hosting & maintenance" },
+    ],
     price: "From £400",
     note: "one-off project fee",
+    serviceLabel: "Custom Website (from £400)",
     href: "/websites",
-    features: [
-      "Unlimited pages, individually designed",
-      "Mobile-first responsive design",
-      "Brand & design direction",
-      "Basic SEO setup & analytics",
-      "Domain configuration",
-      "Free training + 3 months support",
-    ],
-    badge: null,
   },
   {
-    label: "Systems",
+    title: "E-Commerce",
+    tagline: "Sell online without fighting your platform.",
+    desc: "Online stores built around your products and margins, with payments, shipping, and stock wired in from day one.",
+    items: [
+      { icon: <ShoppingBag size={18} />, label: "Custom stores (Stripe / Shopify)" },
+      { icon: <CreditCard size={18} />, label: "Payments, checkout & subscriptions" },
+      { icon: <Boxes size={18} />, label: "Inventory & order management" },
+    ],
+    price: "From £900",
+    note: "one-off project fee",
+    serviceLabel: "E-Commerce / Custom Site",
+    href: "/websites",
+  },
+  {
+    title: "Systems",
+    tagline: "Replace the spreadsheet. Save hours every week.",
+    desc: "Internal systems built around how your business actually works — booking, portals, menus and the data behind them.",
+    items: [
+      { icon: <CalendarClock size={18} />, label: "Booking & scheduling" },
+      { icon: <LayoutDashboard size={18} />, label: "Client & customer portals" },
+      { icon: <UtensilsCrossed size={18} />, label: "Restaurant menus" },
+      { icon: <Database size={18} />, label: "Data management" },
+    ],
     price: "From £600",
     note: "business solutions",
+    serviceLabel: "Business Systems (from £600)",
     href: "/systems",
-    features: [
-      "Discovery & process mapping",
-      "Custom dashboard, tool or automation",
-      "Free custom to-do list included",
-      "User authentication & roles",
-      "Integrations (Stripe, email, APIs)",
-      "Free team training & handover",
-    ],
-    badge: "Most Impact",
-  },
-  {
-    label: "Hosting",
-    price: "From £8/mo",
-    note: "£400 for 4 years · save £100",
-    href: "/hosting",
-    features: [
-      "£400 once for 4 years (£8/month)",
-      "Or £125 per year (£10/month)",
-      "SSL, security patches & monitoring",
-      "Daily backups & uptime checks",
-      "Domain & DNS management",
-      "Completely optional — your choice",
-    ],
-    badge: null,
   },
 ];
 
@@ -154,45 +152,11 @@ const processSteps = [
   { icon: <Rocket size={20} />, ...t.services.steps[4] },
 ];
 
-const whatWeBuild = [
-  {
-    title: "Websites",
-    tagline: "Sites that make small teams look established.",
-    desc: "Custom-designed, fast, accessible websites for startups and small businesses — with hosting, SEO, and domain setup handled.",
-    items: [
-      { icon: <Globe size={18} />, label: "Marketing & startup websites" },
-      { icon: <Palette size={18} />, label: "Brand & design overhauls" },
-      { icon: <ShieldCheck size={18} />, label: "Managed hosting & maintenance" },
-    ],
-  },
-  {
-    title: "E-Commerce",
-    tagline: "Sell online without fighting your platform.",
-    desc: "Online stores built around your products and margins, with payments, shipping, and stock wired in from day one.",
-    items: [
-      { icon: <ShoppingBag size={18} />, label: "Custom stores (Stripe / Shopify)" },
-      { icon: <CreditCard size={18} />, label: "Payments, checkout & subscriptions" },
-      { icon: <Boxes size={18} />, label: "Inventory & order management" },
-    ],
-  },
-  {
-    title: "Systems",
-    tagline: "Replace the spreadsheet. Save hours every week.",
-    desc: "Internal systems built around how your business actually works — booking, portals, menus and the data behind them.",
-    items: [
-      { icon: <CalendarClock size={18} />, label: "Booking & scheduling" },
-      { icon: <LayoutDashboard size={18} />, label: "Client & customer portals" },
-      { icon: <UtensilsCrossed size={18} />, label: "Restaurant menus" },
-      { icon: <Database size={18} />, label: "Data management" },
-    ],
-  },
-
-];
 
 
 export default function Index() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedPkg, setSelectedPkg] = useState(0);
+  const [selectedService, setSelectedService] = useState(buildPackages[0].serviceLabel);
   const [showThanks, setShowThanks] = useState(false);
   const [contactName, setContactName] = useState("");
   const [isSending, setIsSending] = useState(false);
@@ -222,6 +186,8 @@ export default function Index() {
       `Email: ${email}`,
       "",
       message,
+      "",
+      "Get in touch on WhatsApp (+44 7405 922781) or email contact@sadathcompany.com",
     ].join("\n");
 
     const encodedText = encodeURIComponent(text);
@@ -400,104 +366,47 @@ export default function Index() {
             />
             <p className="text-muted-foreground text-lg font-serif italic max-w-2xl mx-auto">
               One studio for the site customers see, the store that sells, and the systems that keep it all running.
-
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-            {whatWeBuild.map((block, i) => (
-              <motion.div
-                key={block.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="h-full flex flex-col p-8 rounded-2xl border border-border bg-card hover:bg-secondary/40 hover:-translate-y-1 transition-all shadow-sm"
-              >
-                <h3 className="font-serif text-2xl mb-2">{block.title}</h3>
-                <p className="text-[10px] uppercase tracking-[0.2em] opacity-50 mb-5">
-                  {block.tagline}
-                </p>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-8">
-                  {block.desc}
-                </p>
-                <ul className="space-y-4 mt-auto">
-                  {block.items.map((item) => (
-                    <li key={item.label} className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center flex-shrink-0">
-                        {item.icon}
-                      </div>
-                      <span className="text-sm">{item.label}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-32 px-6 md:px-12 bg-secondary/20">
-
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-24">
-            <AnimatedText
-              as="h2"
-              text={t.pricing.title}
-              className="font-serif text-4xl md:text-6xl mb-6 block"
-            />
-            <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
-              {t.pricing.subtitle}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pricingOptions.map((opt, i) => {
-              const isSelected = selectedPkg === i;
+            {buildPackages.map((block, i) => {
+              const isSelected = selectedService === block.serviceLabel;
               return (
-                <div
-                  key={opt.label}
-                  className={`relative p-10 rounded-3xl border transition-all flex flex-col ${
+                <motion.div
+                  key={block.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className={`h-full flex flex-col p-8 rounded-2xl border transition-all shadow-sm ${
                     isSelected
-                      ? "bg-primary text-primary-foreground border-primary md:scale-105"
-                      : "bg-secondary/50 border-border hover:border-foreground/20"
+                      ? "bg-primary text-primary-foreground border-primary md:scale-[1.02]"
+                      : "bg-card border-border hover:bg-secondary/40 hover:-translate-y-1"
                   }`}
                 >
-                  {opt.badge && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase whitespace-nowrap bg-emerald-500 text-white">
-                      {opt.badge}
-                    </div>
-                  )}
-                  <h3 className="font-serif text-2xl mb-4 mt-2">{opt.label}</h3>
+                  <h3 className="font-serif text-2xl mb-2">{block.title}</h3>
+                  <p className="text-[10px] uppercase tracking-[0.2em] opacity-60 mb-5">
+                    {block.tagline}
+                  </p>
+                  <p className={`text-sm leading-relaxed mb-8 ${isSelected ? "opacity-90" : "text-muted-foreground"}`}>
+                    {block.desc}
+                  </p>
+
                   <div className="mb-6">
-                    <span className="text-4xl font-bold">{opt.price}</span>
-                    <span
-                      className={`text-xs uppercase tracking-widest block mt-1 ${
-                        isSelected ? "opacity-60" : "text-muted-foreground"
-                      }`}
-                    >
-                      {opt.note}
+                    <span className="text-3xl font-bold">{block.price}</span>
+                    <span className={`text-xs uppercase tracking-widest block mt-1 ${isSelected ? "opacity-70" : "text-muted-foreground"}`}>
+                      {block.note}
                     </span>
                   </div>
 
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {opt.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <CheckCircle2
-                          size={16}
-                          className={`mt-0.5 flex-shrink-0 ${
-                            isSelected ? "opacity-80" : "text-emerald-500"
-                          }`}
-                        />
-                        <span
-                          className={`text-sm ${
-                            isSelected ? "opacity-90" : "text-muted-foreground"
-                          }`}
-                        >
-                          {feature}
-                        </span>
+                  <ul className="space-y-4 mt-auto mb-8">
+                    {block.items.map((item) => (
+                      <li key={item.label} className="flex items-center gap-3">
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${isSelected ? "bg-primary-foreground text-primary" : "bg-primary text-primary-foreground"}`}>
+                          {item.icon}
+                        </div>
+                        <span className="text-sm">{item.label}</span>
                       </li>
                     ))}
                   </ul>
@@ -505,7 +414,7 @@ export default function Index() {
                   <div className="mt-auto pt-6 border-t border-current/10 space-y-3">
                     <button
                       onClick={() => {
-                        setSelectedPkg(i);
+                        setSelectedService(block.serviceLabel);
                         scrollToSection("contact");
                       }}
                       className={`w-full py-4 rounded-xl text-[10px] font-bold tracking-widest uppercase transition-all ${
@@ -514,10 +423,10 @@ export default function Index() {
                           : "bg-primary text-primary-foreground hover:opacity-90"
                       }`}
                     >
-                      {t.pricing.select}
+                      Get a quote
                     </button>
                     <Link
-                      to={opt.href}
+                      to={block.href}
                       className={`block text-center text-[10px] font-bold tracking-widest uppercase py-3 rounded-xl border transition-all ${
                         isSelected
                           ? "border-current/30 hover:bg-primary-foreground/10"
@@ -527,13 +436,14 @@ export default function Index() {
                       View details
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
 
         </div>
       </section>
+
 
       {/* Contact Form */}
       <section
