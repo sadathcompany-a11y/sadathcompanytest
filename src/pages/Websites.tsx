@@ -20,7 +20,7 @@ const tiers = [
   },
   {
     label: "E-Commerce / Advanced Site",
-    price: "From £900",
+    price: "From £600",
     note: "one-off project fee",
     badge: "Most popular",
     features: [
@@ -46,7 +46,7 @@ export default function Websites() {
     <SiteShell>
       <Seo
         title="Website Design Prices — Sadath Company"
-        description="Custom websites from £400 and e-commerce builds from £900. Individually designed, mobile-first, with free training and 3 months of support."
+        description="Custom websites from £400 and e-commerce builds from £600. Individually designed, mobile-first, with free training and 3 months of support."
         path="/websites"
       />
       <section className="px-6 md:px-12">
