@@ -105,7 +105,7 @@ const buildPackages = [
       { icon: <CreditCard size={18} />, label: "Payments, checkout & subscriptions" },
       { icon: <Boxes size={18} />, label: "Inventory & order management" },
     ],
-    price: "From £900",
+    price: "From £600",
     note: "one-off project fee",
     serviceLabel: "E-Commerce / Custom Site",
     href: "/websites",
