@@ -24,13 +24,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <img src={sadathLogo} alt="Sadath Company" className="h-20 md:h-32 w-auto object-contain" />
         </Link>
         <div className="flex items-center gap-6">
-          <div className="hidden md:flex items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase opacity-60">
-            {navPages.map((p) => (
-              <Link key={p.to} to={p.to} className="hover:opacity-100 transition-opacity">
-                {p.label}
-              </Link>
-            ))}
-          </div>
           <a
             href="/#contact"
             className="group flex items-center gap-2 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase bg-primary text-primary-foreground px-5 md:px-7 py-3 rounded-full shadow-lg hover:scale-105 transition-all"
