@@ -239,11 +239,6 @@ export default function Index() {
         </div>
 
         <div className="flex items-center space-x-6">
-          <div className="hidden md:flex items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase opacity-60">
-            <Link to="/websites" className="hover:opacity-100 transition-opacity">Websites</Link>
-            <Link to="/systems" className="hover:opacity-100 transition-opacity">Systems</Link>
-            <Link to="/hosting" className="hover:opacity-100 transition-opacity">Hosting</Link>
-          </div>
           <button
 
             onClick={() => scrollToSection("contact")}
@@ -275,9 +270,6 @@ export default function Index() {
             exit={{ opacity: 0, x: 100 }}
             className="fixed inset-0 z-[60] bg-background flex flex-col items-center justify-center space-y-8 text-2xl font-serif"
           >
-            <Link to="/websites" onClick={() => setIsMenuOpen(false)}>Websites</Link>
-            <Link to="/systems" onClick={() => setIsMenuOpen(false)}>Systems</Link>
-            <Link to="/hosting" onClick={() => setIsMenuOpen(false)}>Hosting</Link>
             <button onClick={() => scrollToSection("contact")}>
               {t.nav.contact}
             </button>
@@ -427,13 +419,14 @@ export default function Index() {
                     </button>
                     <Link
                       to={block.href}
-                      className={`block text-center text-[10px] font-bold tracking-widest uppercase py-3 rounded-xl border transition-all ${
+                      className={`group flex items-center justify-center gap-2 text-xs font-bold tracking-widest uppercase py-4 rounded-xl border-2 transition-all ${
                         isSelected
-                          ? "border-current/30 hover:bg-primary-foreground/10"
-                          : "border-border hover:bg-secondary"
+                          ? "border-current/50 hover:bg-primary-foreground/10"
+                          : "border-foreground/40 hover:border-foreground hover:bg-secondary"
                       }`}
                     >
-                      View details
+                      View full details
+                      <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                     </Link>
                   </div>
                 </motion.div>
