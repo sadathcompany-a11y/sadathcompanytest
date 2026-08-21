@@ -505,7 +505,8 @@ export default function Index() {
               </label>
               <select
                 name="project"
-                defaultValue={serviceOptions[selectedPkg]}
+                value={selectedService}
+                onChange={(e) => setSelectedService(e.target.value)}
                 className={`${inputClasses} appearance-none`}
               >
                 {serviceOptions.map((opt) => (
