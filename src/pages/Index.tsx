@@ -77,6 +77,7 @@ const t = {
   form: {
     fullName: "Full Name",
     email: "Email Address",
+    phone: "Phone Number",
     description: "Briefly describe your project and goals",
   },
 };
@@ -168,22 +169,37 @@ export default function Index() {
 
   const WHATSAPP_NUMBER = "447405922781";
 
+  const [contactError, setContactError] = useState<string | null>(null);
+
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setContactError(null);
     const form = e.currentTarget;
     const fd = new FormData(form);
     const name = String(fd.get("name") || "").slice(0, 100);
     const email = String(fd.get("email") || "").slice(0, 255);
+    const phone = String(fd.get("phone") || "").slice(0, 50);
     const project = String(fd.get("project") || "").slice(0, 100);
     const message = String(fd.get("message") || "").slice(0, 1000);
+
+    if (!email.trim() && !phone.trim()) {
+      setContactError("Please enter either an email or a phone number so we can reply.");
+      return;
+    }
 
     setIsSending(true);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
+    const contactLine = email.trim() && phone.trim()
+      ? `Email: ${email} | Phone: ${phone}`
+      : email.trim()
+      ? `Email: ${email}`
+      : `Phone: ${phone}`;
+
     const text = [
       `Hi, I'm ${name}.`,
       `Service: ${project}`,
-      `Email: ${email}`,
+      contactLine,
       "",
       message,
       "",
@@ -463,26 +479,26 @@ export default function Index() {
             onSubmit={handleContactSubmit}
             className="rounded-2xl border border-border bg-card/50 backdrop-blur-sm p-8 md:p-10 space-y-6 shadow-[0_0_40px_-12px_hsl(var(--primary)/0.15)]"
           >
+            <div className="space-y-1.5">
+              <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                {t.form.fullName}
+              </label>
+              <input
+                required
+                maxLength={100}
+                name="name"
+                type="text"
+                className={inputClasses}
+                placeholder="John Doe"
+              />
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div className="space-y-1.5">
-                <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {t.form.fullName}
-                </label>
-                <input
-                  required
-                  maxLength={100}
-                  name="name"
-                  type="text"
-                  className={inputClasses}
-                  placeholder="John Doe"
-                />
-              </div>
               <div className="space-y-1.5">
                 <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
                   {t.form.email}
                 </label>
                 <input
-                  required
                   maxLength={255}
                   name="email"
                   type="email"
@@ -490,7 +506,25 @@ export default function Index() {
                   placeholder="john@company.com"
                 />
               </div>
+              <div className="space-y-1.5">
+                <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                  {t.form.phone}
+                </label>
+                <input
+                  maxLength={50}
+                  name="phone"
+                  type="tel"
+                  className={inputClasses}
+                  placeholder="+44 7405 922781"
+                />
+              </div>
             </div>
+
+            {contactError && (
+              <p className="text-sm text-amber-500 bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-3">
+                {contactError}
+              </p>
+            )}
 
             <div className="space-y-1.5">
               <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
