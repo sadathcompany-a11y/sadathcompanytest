@@ -94,7 +94,7 @@ const buildPackages = [
     ],
     price: "From £400",
     note: "one-off project fee",
-    serviceLabel: "Custom Website (from £400)",
+    serviceLabel: "Custom Website",
     href: "/websites",
   },
   {
@@ -123,7 +123,7 @@ const buildPackages = [
     ],
     price: "From £600",
     note: "business solutions",
-    serviceLabel: "Business Systems (from £600)",
+    serviceLabel: "Business Systems",
     href: "/systems",
   },
 ];
