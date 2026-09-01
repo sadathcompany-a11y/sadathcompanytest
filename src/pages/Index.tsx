@@ -161,6 +161,7 @@ export default function Index() {
   const [showThanks, setShowThanks] = useState(false);
   const [contactName, setContactName] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [contactMethod, setContactMethod] = useState<"email" | "phone">("email");
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
