@@ -77,6 +77,7 @@ const t = {
   form: {
     fullName: "Full Name",
     email: "Email Address",
+    phone: "Phone Number",
     description: "Briefly describe your project and goals",
   },
 };
