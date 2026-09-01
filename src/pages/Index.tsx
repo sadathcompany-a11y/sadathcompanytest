@@ -479,31 +479,43 @@ export default function Index() {
             onSubmit={handleContactSubmit}
             className="rounded-2xl border border-border bg-card/50 backdrop-blur-sm p-8 md:p-10 space-y-6 shadow-[0_0_40px_-12px_hsl(var(--primary)/0.15)]"
           >
+            <div className="space-y-1.5">
+              <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                {t.form.fullName}
+              </label>
+              <input
+                required
+                maxLength={100}
+                name="name"
+                type="text"
+                className={inputClasses}
+                placeholder="John Doe"
+              />
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div className="space-y-1.5">
-                <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {t.form.fullName}
-                </label>
-                <input
-                  required
-                  maxLength={100}
-                  name="name"
-                  type="text"
-                  className={inputClasses}
-                  placeholder="John Doe"
-                />
-              </div>
               <div className="space-y-1.5">
                 <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
                   {t.form.email}
                 </label>
                 <input
-                  required
                   maxLength={255}
                   name="email"
                   type="email"
                   className={inputClasses}
                   placeholder="john@company.com"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
+                  {t.form.phone}
+                </label>
+                <input
+                  maxLength={50}
+                  name="phone"
+                  type="tel"
+                  className={inputClasses}
+                  placeholder="+44 7405 922781"
                 />
               </div>
             </div>
