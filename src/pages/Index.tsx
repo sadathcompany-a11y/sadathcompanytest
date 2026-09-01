@@ -130,10 +130,10 @@ const buildPackages = [
 
 
 const serviceOptions = [
-  "Custom Website (from £400)",
-  "Business Systems (from £600)",
-  "Managed Hosting (£8/month)",
+  "Custom Website",
   "E-Commerce / Custom Site",
+  "Business Systems",
+  "Managed Hosting",
   "Booking or Scheduling System",
   "Design Overhaul / Rebrand",
   "Consulting",
