@@ -494,29 +494,47 @@ export default function Index() {
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div className="space-y-1.5">
-                <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {t.form.email}
-                </label>
-                <input
-                  maxLength={255}
-                  name="email"
-                  type="email"
-                  className={inputClasses}
-                  placeholder="john@company.com"
-                />
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setContactMethod("email")}
+                  className={`flex-1 py-3 rounded-xl text-[11px] font-bold tracking-widest uppercase border transition-all ${
+                    contactMethod === "email"
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "border-border hover:border-foreground/30"
+                  }`}
+                >
+                  Email
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setContactMethod("phone")}
+                  className={`flex-1 py-3 rounded-xl text-[11px] font-bold tracking-widest uppercase border transition-all ${
+                    contactMethod === "phone"
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "border-border hover:border-foreground/30"
+                  }`}
+                >
+                  Phone
+                </button>
               </div>
+
               <div className="space-y-1.5">
                 <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {t.form.phone}
+                  {contactMethod === "email" ? t.form.email : t.form.phone}
                 </label>
                 <input
-                  maxLength={50}
-                  name="phone"
-                  type="tel"
+                  required
+                  maxLength={contactMethod === "email" ? 255 : 50}
+                  name={contactMethod}
+                  type={contactMethod === "email" ? "email" : "tel"}
                   className={inputClasses}
-                  placeholder="+44 7405 922781"
+                  placeholder={
+                    contactMethod === "email"
+                      ? "john@company.com"
+                      : "+44 7405 922781"
+                  }
                 />
               </div>
             </div>
