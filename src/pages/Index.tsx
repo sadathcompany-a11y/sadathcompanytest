@@ -94,7 +94,7 @@ const buildPackages = [
     ],
     price: "From £400",
     note: "one-off project fee",
-    serviceLabel: "Custom Website (from £400)",
+    serviceLabel: "Custom Website",
     href: "/websites",
   },
   {
@@ -123,17 +123,17 @@ const buildPackages = [
     ],
     price: "From £600",
     note: "business solutions",
-    serviceLabel: "Business Systems (from £600)",
+    serviceLabel: "Business Systems",
     href: "/systems",
   },
 ];
 
 
 const serviceOptions = [
-  "Custom Website (from £400)",
-  "Business Systems (from £600)",
-  "Managed Hosting (£8/month)",
+  "Custom Website",
   "E-Commerce / Custom Site",
+  "Business Systems",
+  "Managed Hosting",
   "Booking or Scheduling System",
   "Design Overhaul / Rebrand",
   "Consulting",
@@ -161,6 +161,7 @@ export default function Index() {
   const [showThanks, setShowThanks] = useState(false);
   const [contactName, setContactName] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [contactMethod, setContactMethod] = useState<"email" | "phone">("email");
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -177,24 +178,25 @@ export default function Index() {
     const form = e.currentTarget;
     const fd = new FormData(form);
     const name = String(fd.get("name") || "").slice(0, 100);
-    const email = String(fd.get("email") || "").slice(0, 255);
-    const phone = String(fd.get("phone") || "").slice(0, 50);
+    const contactValue = String(fd.get(contactMethod) || "").slice(0, contactMethod === "email" ? 255 : 50);
     const project = String(fd.get("project") || "").slice(0, 100);
     const message = String(fd.get("message") || "").slice(0, 1000);
 
-    if (!email.trim() && !phone.trim()) {
-      setContactError("Please enter either an email or a phone number so we can reply.");
+    if (!contactValue.trim()) {
+      setContactError(
+        contactMethod === "email"
+          ? "Please enter your email so we can reply."
+          : "Please enter your phone number so we can reply."
+      );
       return;
     }
 
     setIsSending(true);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const contactLine = email.trim() && phone.trim()
-      ? `Email: ${email} | Phone: ${phone}`
-      : email.trim()
-      ? `Email: ${email}`
-      : `Phone: ${phone}`;
+    const contactLine = contactMethod === "email"
+      ? `Email: ${contactValue}`
+      : `Phone: ${contactValue}`;
 
     const text = [
       `Hi, I'm ${name}.`,
@@ -493,29 +495,47 @@ export default function Index() {
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div className="space-y-1.5">
-                <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {t.form.email}
-                </label>
-                <input
-                  maxLength={255}
-                  name="email"
-                  type="email"
-                  className={inputClasses}
-                  placeholder="john@company.com"
-                />
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setContactMethod("email")}
+                  className={`flex-1 py-3 rounded-xl text-[11px] font-bold tracking-widest uppercase border transition-all ${
+                    contactMethod === "email"
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "border-border hover:border-foreground/30"
+                  }`}
+                >
+                  Email
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setContactMethod("phone")}
+                  className={`flex-1 py-3 rounded-xl text-[11px] font-bold tracking-widest uppercase border transition-all ${
+                    contactMethod === "phone"
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "border-border hover:border-foreground/30"
+                  }`}
+                >
+                  Phone
+                </button>
               </div>
+
               <div className="space-y-1.5">
                 <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {t.form.phone}
+                  {contactMethod === "email" ? t.form.email : t.form.phone}
                 </label>
                 <input
-                  maxLength={50}
-                  name="phone"
-                  type="tel"
+                  required
+                  maxLength={contactMethod === "email" ? 255 : 50}
+                  name={contactMethod}
+                  type={contactMethod === "email" ? "email" : "tel"}
                   className={inputClasses}
-                  placeholder="+44 7405 922781"
+                  placeholder={
+                    contactMethod === "email"
+                      ? "john@company.com"
+                      : "+44 7405 922781"
+                  }
                 />
               </div>
             </div>
