@@ -520,6 +520,12 @@ export default function Index() {
               </div>
             </div>
 
+            {contactError && (
+              <p className="text-sm text-amber-500 bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-3">
+                {contactError}
+              </p>
+            )}
+
             <div className="space-y-1.5">
               <label className="text-[10px] uppercase tracking-widest text-muted-foreground">
                 Service Interested In
