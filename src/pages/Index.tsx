@@ -178,24 +178,25 @@ export default function Index() {
     const form = e.currentTarget;
     const fd = new FormData(form);
     const name = String(fd.get("name") || "").slice(0, 100);
-    const email = String(fd.get("email") || "").slice(0, 255);
-    const phone = String(fd.get("phone") || "").slice(0, 50);
+    const contactValue = String(fd.get(contactMethod) || "").slice(0, contactMethod === "email" ? 255 : 50);
     const project = String(fd.get("project") || "").slice(0, 100);
     const message = String(fd.get("message") || "").slice(0, 1000);
 
-    if (!email.trim() && !phone.trim()) {
-      setContactError("Please enter either an email or a phone number so we can reply.");
+    if (!contactValue.trim()) {
+      setContactError(
+        contactMethod === "email"
+          ? "Please enter your email so we can reply."
+          : "Please enter your phone number so we can reply."
+      );
       return;
     }
 
     setIsSending(true);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    const contactLine = email.trim() && phone.trim()
-      ? `Email: ${email} | Phone: ${phone}`
-      : email.trim()
-      ? `Email: ${email}`
-      : `Phone: ${phone}`;
+    const contactLine = contactMethod === "email"
+      ? `Email: ${contactValue}`
+      : `Phone: ${contactValue}`;
 
     const text = [
       `Hi, I'm ${name}.`,
