@@ -169,22 +169,37 @@ export default function Index() {
 
   const WHATSAPP_NUMBER = "447405922781";
 
+  const [contactError, setContactError] = useState<string | null>(null);
+
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setContactError(null);
     const form = e.currentTarget;
     const fd = new FormData(form);
     const name = String(fd.get("name") || "").slice(0, 100);
     const email = String(fd.get("email") || "").slice(0, 255);
+    const phone = String(fd.get("phone") || "").slice(0, 50);
     const project = String(fd.get("project") || "").slice(0, 100);
     const message = String(fd.get("message") || "").slice(0, 1000);
+
+    if (!email.trim() && !phone.trim()) {
+      setContactError("Please enter either an email or a phone number so we can reply.");
+      return;
+    }
 
     setIsSending(true);
     await new Promise((resolve) => setTimeout(resolve, 300));
 
+    const contactLine = email.trim() && phone.trim()
+      ? `Email: ${email} | Phone: ${phone}`
+      : email.trim()
+      ? `Email: ${email}`
+      : `Phone: ${phone}`;
+
     const text = [
       `Hi, I'm ${name}.`,
       `Service: ${project}`,
-      `Email: ${email}`,
+      contactLine,
       "",
       message,
       "",
